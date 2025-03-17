@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto\\Projeto_EDA\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{327F5510-1AD2-4790-B13F-E406A6C66F3D}|Projeto_EDA\\Projeto_EDA.vcxproj|C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto\\Projeto_EDA\\Projeto_EDA\\Projeto_EDA.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{327F5510-1AD2-4790-B13F-E406A6C66F3D}|Projeto_EDA\\Projeto_EDA.vcxproj|solutionrelative:Projeto_EDA\\Projeto_EDA.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Projeto_EDA.cpp",
+              "DocumentMoniker": "C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto\\Projeto_EDA\\Projeto_EDA\\Projeto_EDA.cpp",
+              "RelativeDocumentMoniker": "Projeto_EDA\\Projeto_EDA.cpp",
+              "ToolTip": "C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto\\Projeto_EDA\\Projeto_EDA\\Projeto_EDA.cpp",
+              "RelativeToolTip": "Projeto_EDA\\Projeto_EDA.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-17T14:45:52.268Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
