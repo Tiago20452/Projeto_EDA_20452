@@ -128,11 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Antena.cpp" />
+    <ClCompile Include="ListaAntenas.cpp" />
     <ClCompile Include="Projeto_EDA.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Antena.h" />
     <ClInclude Include="Dados.h" />
+    <ClInclude Include="ListaAntenas.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

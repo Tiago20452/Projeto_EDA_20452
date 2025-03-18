@@ -21,12 +21,18 @@
     <ClCompile Include="Antena.cpp">
       <Filter>Arquivos de Origem</Filter>
     </ClCompile>
+    <ClCompile Include="ListaAntenas.cpp">
+      <Filter>Arquivos de Origem</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Dados.h">
       <Filter>Arquivos de Origem</Filter>
     </ClInclude>
     <ClInclude Include="Antena.h">
+      <Filter>Arquivos de Origem</Filter>
+    </ClInclude>
+    <ClInclude Include="ListaAntenas.h">
       <Filter>Arquivos de Origem</Filter>
     </ClInclude>
   </ItemGroup>
