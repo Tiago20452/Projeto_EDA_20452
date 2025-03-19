@@ -8,5 +8,8 @@
 // ---------- Gestão da ED ----------
 ED* criarED();
 void destruirED(ED* ed);
+void carregarAntenasDeFicheiro(ED* ed, const char* nomeFicheiro);
+void listarAntenas(const ED* ed);
+
 
 #endif // ANTENA_H

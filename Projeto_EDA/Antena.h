@@ -5,12 +5,12 @@
 #include "Dados.h" // Para usar as estruturas Antena e ED
 
 // ---------- Operações Básicas ----------
-void inserirAntena(ED* ed, char freq, int linha, int coluna);
-int removerAntena(ED* ed, int linha, int coluna);
+int verificaPosicaoAntena(ED* ed, int linha, int coluna);
+void insereAntena(ED* ed, char freq, int linha, int coluna);
+int removerAntena(ED* ed, char freq, int linha, int coluna);
 
 // ---------- Operações Avançadas (Fase 1) ----------
-void carregarAntenasDeFicheiro(ED* ed, const char* nomeFicheiro);
 void calcularLocaisNefastos(ED* ed, ED* locaisNefastos);
-void listarAntenas(const ED* ed);
+
 
 #endif // ANTENA_H

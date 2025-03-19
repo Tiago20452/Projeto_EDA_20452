@@ -4,48 +4,26 @@
 #include "Antena.h"
 #include "Dados.h"
 
-// Carrega as antenas de um ficheiro de texto
-void carregarAntenasDeFicheiro(ED* ed, const char* nomeFicheiro) {
-    FILE* arquivo = NULL;
-    errno_t err = fopen_s(&arquivo, nomeFicheiro, "r");
-    if (err != 0 || arquivo == NULL) {
-        perror("Erro ao abrir o arquivo");
+
+// Função para verificar se já existe uma antena na posição
+int verificaPosicaoAntena(ED* ed, int linha, int coluna) {
+    Antena* atual = ed->cabeca;
+    while (atual != NULL) {
+        if (atual->linha == linha && atual->coluna == coluna) {
+            return 0; // Posição já ocupada
+        }
+        atual = atual->prox;
+    }
+    return 1; // Posição disponível
+}
+
+// Função para inserir uma nova antena, se a posição estiver disponível
+void insereAntena(ED* ed, char freq, int linha, int coluna) {
+    if (!verificaPosicaoAntena(ed, linha, coluna)) {
+        printf("Erro: Ja existe uma antena em (%d, %d).\n", linha, coluna);
         return;
     }
 
-    char buffer[1024]; // Buffer estático para ler linhas
-    int linhaAtual = 0;
-
-    // Lê cada linha do arquivo até atingir o final (EOF)
-    while (fgets(buffer, sizeof(buffer), arquivo) != NULL) {
-
-        // Remove o caractere de nova linha (\n) ou \r\n (Windows)
-        size_t comprimento = strlen(buffer);
-        if (comprimento > 0 && buffer[comprimento - 1] == '\n') {
-            buffer[comprimento - 1] = '\0';
-            comprimento--;
-        }
-        if (comprimento > 0 && buffer[comprimento - 1] == '\r') {
-            buffer[comprimento - 1] = '\0';
-            comprimento--;
-        }
-
-        // Processa cada caractere da linha
-        for (int coluna = 0; coluna < comprimento; coluna++) {
-            char caractere = buffer[coluna];
-            if (caractere != '.') { // É uma antena
-                inserirAntena(ed, caractere, linhaAtual, coluna);
-            }
-        }
-
-        linhaAtual++;
-    }
-
-    fclose(arquivo);
-}
-
-// Insere uma antena no início da lista
-void inserirAntena(ED* ed, char freq, int linha, int coluna) {
     Antena* novaAntena = (Antena*)malloc(sizeof(Antena));
     if (novaAntena == NULL) {
         perror("Erro ao alocar memória para Antena");
@@ -59,56 +37,24 @@ void inserirAntena(ED* ed, char freq, int linha, int coluna) {
     ed->cabeca = novaAntena;
 }
 
-// Listar Antenas de forma decrescente por linha
-void listarAntenas(const ED* ed) {
-    // Passo 1: Contar o número de antenas
-    int numAntenas = 0;
+// Função para remover uma antena com uma frequência específica na posição
+int removerAntena(ED* ed, char freq, int linha, int coluna) {
     Antena* atual = ed->cabeca;
+    Antena* anterior = NULL;
+
     while (atual != NULL) {
-        numAntenas++;
-        atual = atual->prox;
-    }
-
-    // Passo 2: Criar um array de ponteiros para Antena
-    Antena** arrayAntenas = (Antena**)malloc(numAntenas * sizeof(Antena*));
-    if (arrayAntenas == NULL) {
-        perror("Erro ao alocar memória");
-        return;
-    }
-
-    // Passo 3: Preencher o array com as antenas da lista
-    atual = ed->cabeca;
-    for (int i = 0; i < numAntenas; i++) {
-        arrayAntenas[i] = atual;
-        atual = atual->prox;
-    }
-
-    // Passo 4: Ordenar o array por linha e coluna
-    qsort(arrayAntenas, numAntenas, sizeof(Antena*),
-        [](const void* a, const void* b) -> int {
-            Antena* antenaA = *(Antena**)a;
-            Antena* antenaB = *(Antena**)b;
-
-            // Ordena por linha (prioridade máxima)
-            if (antenaA->linha != antenaB->linha) {
-                return antenaA->linha - antenaB->linha;
+        if (atual->linha == linha && atual->coluna == coluna && atual->frequencia == freq) {
+            if (anterior == NULL) {
+                ed->cabeca = atual->prox;
             }
-
-            // Se linha igual, ordena por coluna
-            return antenaA->coluna - antenaB->coluna;
-        });
-
-    // Passo 5: Imprimir as antenas ordenadas
-    printf("=== Lista de Antenas (Ordenadas) ===\n");
-    for (int i = 0; i < numAntenas; i++) {
-        printf("Antena '%c' em (%d, %d)\n",
-            arrayAntenas[i]->frequencia,
-            arrayAntenas[i]->linha,
-            arrayAntenas[i]->coluna);
+            else {
+                anterior->prox = atual->prox;
+            }
+            free(atual);
+            return 1; // Antena removida com sucesso
+        }
+        anterior = atual;
+        atual = atual->prox;
     }
-    printf("====================================\n");
-
-    // Passo 6: Liberar memória do array
-    free(arrayAntenas);
+    return 0; // Antena não encontrada
 }
-
