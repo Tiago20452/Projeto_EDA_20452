@@ -5,6 +5,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{327F5510-1AD2-4790-B13F-E406A6C66F3D}|Projeto_EDA\\Projeto_EDA.vcxproj|C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto_EDA\\Projeto_EDA\\Projeto_EDA.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{327F5510-1AD2-4790-B13F-E406A6C66F3D}|Projeto_EDA\\Projeto_EDA.vcxproj|solutionrelative:Projeto_EDA\\Projeto_EDA.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{327F5510-1AD2-4790-B13F-E406A6C66F3D}|Projeto_EDA\\Projeto_EDA.vcxproj|C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto_EDA\\Projeto_EDA\\LocalNefasto.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{327F5510-1AD2-4790-B13F-E406A6C66F3D}|Projeto_EDA\\Projeto_EDA.vcxproj|solutionrelative:Projeto_EDA\\LocalNefasto.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{327F5510-1AD2-4790-B13F-E406A6C66F3D}|Projeto_EDA\\Projeto_EDA.vcxproj|C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto_EDA\\Projeto_EDA\\LocalNefasto.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{327F5510-1AD2-4790-B13F-E406A6C66F3D}|Projeto_EDA\\Projeto_EDA.vcxproj|solutionrelative:Projeto_EDA\\LocalNefasto.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +22,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LocalNefasto.h",
+              "DocumentMoniker": "C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto_EDA\\Projeto_EDA\\LocalNefasto.h",
+              "RelativeDocumentMoniker": "Projeto_EDA\\LocalNefasto.h",
+              "ToolTip": "C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto_EDA\\Projeto_EDA\\LocalNefasto.h",
+              "RelativeToolTip": "Projeto_EDA\\LocalNefasto.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-03-20T10:57:44.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LocalNefasto.cpp",
+              "DocumentMoniker": "C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto_EDA\\Projeto_EDA\\LocalNefasto.cpp",
+              "RelativeDocumentMoniker": "Projeto_EDA\\LocalNefasto.cpp",
+              "ToolTip": "C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto_EDA\\Projeto_EDA\\LocalNefasto.cpp",
+              "RelativeToolTip": "Projeto_EDA\\LocalNefasto.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-03-20T10:36:27.325Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +58,7 @@
               "RelativeDocumentMoniker": "Projeto_EDA\\Projeto_EDA.cpp",
               "ToolTip": "C:\\Users\\tiafo\\Desktop\\LESI\\A3_S2\\EDA\\Projeto_EDA\\Projeto_EDA\\Projeto_EDA.cpp",
               "RelativeToolTip": "Projeto_EDA\\Projeto_EDA.cpp",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2025-03-19T10:23:07.593Z",
               "EditorCaption": ""

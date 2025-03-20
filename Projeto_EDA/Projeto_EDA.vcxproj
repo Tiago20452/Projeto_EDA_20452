@@ -129,12 +129,14 @@
   <ItemGroup>
     <ClCompile Include="Antena.cpp" />
     <ClCompile Include="ListaAntenas.cpp" />
+    <ClCompile Include="LocalNefasto.cpp" />
     <ClCompile Include="Projeto_EDA.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Antena.h" />
     <ClInclude Include="Dados.h" />
     <ClInclude Include="ListaAntenas.h" />
+    <ClInclude Include="LocalNefasto.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

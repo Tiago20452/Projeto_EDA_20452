@@ -8,9 +8,6 @@
 int verificaPosicaoAntena(ED* ed, int linha, int coluna);
 void insereAntena(ED* ed, char freq, int linha, int coluna);
 int removerAntena(ED* ed, char freq, int linha, int coluna);
-
-// ---------- Operações Avançadas (Fase 1) ----------
-void calcularLocaisNefastos(ED* ed, ED* locaisNefastos);
-
+void inserirAntenaManual(ED* ed);
 
 #endif // ANTENA_H

@@ -18,4 +18,20 @@ typedef struct {
     Antena* cabeca;         ///< Ponteiro para a primeira antena da lista
 } ED;
 
+/**
+ * @brief Estrutura que representa um local nefasto na lista ligada
+ */
+typedef struct LocalNefasto {
+    int linha;
+    int coluna;
+    struct LocalNefasto* prox;
+} LocalNefasto;
+
+/**
+ * @brief Estrutura principal LocaisNefastos (lista ligada de locais nefastos)
+ */
+typedef struct {
+    LocalNefasto* cabeca; // Lista de locais nefastos
+} ED_LocaisNefastos;
+
 #endif // DADOS_H

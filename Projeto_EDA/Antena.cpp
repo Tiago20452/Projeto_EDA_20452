@@ -58,3 +58,23 @@ int removerAntena(ED* ed, char freq, int linha, int coluna) {
     }
     return 0; // Antena não encontrada
 }
+
+// Função para inserir uma antena manualmente
+void inserirAntenaManual(ED* ed) {
+    char freq;
+    int linha, coluna;
+
+    // Ler frequência
+    printf("Insira a frequência da antena (caractere): ");
+    scanf_s(" %c", &freq, 1);
+
+    // Ler coordenadas
+    printf("Insira a linha da antena: ");
+    scanf_s("%d", &linha);
+
+    printf("Insira a coluna da antena: ");
+    scanf_s("%d", &coluna);
+
+    // Chamar função de inserção
+    insereAntena(ed, freq, linha, coluna);
+}

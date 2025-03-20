@@ -4,39 +4,37 @@
 #include <iostream>
 #include "Antena.h"
 #include "ListaAntenas.h"
+#include "LocalNefasto.h"
 
 
 int main() {
 
-    char freq;
-	int linha, coluna;
-
     const char* nomeArquivo = "Antenas.txt";
     ED* ed = criarED();
+	ED_LocaisNefastos locaisNefastos = { NULL };
 
     carregarAntenasDeFicheiro(ed, nomeArquivo); 
     listarAntenas(ed);
 
-	removerAntena(ed,'O', 5, 5);
+ //   //Remover uma antena existente
+	//removerAntena(ed,'O', 5, 5);
 
-    listarAntenas(ed);
+ //   listarAntenas(ed);
 
-	//Inserir uma antena manualmente
+	////Inserir uma antena manualmente
 
-    printf("Insira a frequência da antena (caractere): ");
-    scanf_s(" %c", &freq, 1); 
+	//inserirAntenaManual(ed);    
 
-    printf("Insira a linha da antena: ");
-    scanf_s("%d", &linha);
+	//listarAntenas(ed);
+ //   
+ //   destruirED(ed);
 
-    printf("Insira a coluna da antena: ");
-    scanf_s("%d", &coluna);
+	// Calcular locais nefastos
+	calcularLocaisNefastos(ed, &locaisNefastos);
 
-    insereAntena(ed, freq, linha, coluna);
+	// Listar resultados
+	listarLocaisNefastos(&locaisNefastos);
 
-	listarAntenas(ed);
-    
-    destruirED(ed);
 
     return 0;
 }
