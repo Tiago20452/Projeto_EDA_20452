@@ -26,7 +26,7 @@ void insereAntena(ED* ed, char freq, int linha, int coluna) {
 
     Antena* novaAntena = (Antena*)malloc(sizeof(Antena));
     if (novaAntena == NULL) {
-        perror("Erro ao alocar memória para Antena");
+        perror("Erro ao alocar memoria para Antena");
         exit(EXIT_FAILURE);
     }
 
@@ -65,7 +65,7 @@ void inserirAntenaManual(ED* ed) {
     int linha, coluna;
 
     // Ler frequência
-    printf("Insira a frequência da antena (caractere): ");
+    printf("Insira a frequencia da antena (caractere): ");
     scanf_s(" %c", &freq, 1);
 
     // Ler coordenadas

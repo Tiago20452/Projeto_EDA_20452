@@ -28,7 +28,7 @@ void destruirED(ED* ed) {
 }
 
 // Carrega as antenas de um ficheiro de texto
-void carregarAntenasDeFicheiro(ED* ed, const char* nomeFicheiro) {
+void carregarAntenasDeFicheiro(ED* ed, const char* nomeFicheiro, int* max_linhas, int* max_colunas) {
     FILE* arquivo = NULL;
     errno_t err = fopen_s(&arquivo, nomeFicheiro, "r");
     if (err != 0 || arquivo == NULL) {
@@ -36,34 +36,33 @@ void carregarAntenasDeFicheiro(ED* ed, const char* nomeFicheiro) {
         return;
     }
 
-    char buffer[1024]; // Buffer estático para ler linhas
+    char buffer[1024];
     int linhaAtual = 0;
+    *max_colunas = 0;
 
-    // Lê cada linha do arquivo até atingir o final (EOF)
     while (fgets(buffer, sizeof(buffer), arquivo) != NULL) {
-
-        // Remove o caractere de nova linha (\n) ou \r\n (Windows)
         size_t comprimento = strlen(buffer);
         if (comprimento > 0 && buffer[comprimento - 1] == '\n') {
             buffer[comprimento - 1] = '\0';
             comprimento--;
         }
-        if (comprimento > 0 && buffer[comprimento - 1] == '\r') {
-            buffer[comprimento - 1] = '\0';
-            comprimento--;
+
+        // Atualiza o número máximo de colunas
+        if (comprimento > *max_colunas) {
+            *max_colunas = comprimento;
         }
 
-        // Processa cada caractere da linha
+        // Processa cada caractere
         for (int coluna = 0; coluna < comprimento; coluna++) {
-            char caractere = buffer[coluna];
-            if (caractere != '.') { // É uma antena
-                insereAntena(ed, caractere, linhaAtual, coluna);
+            if (buffer[coluna] != '.') {
+                insereAntena(ed, buffer[coluna], linhaAtual, coluna);
             }
         }
 
         linhaAtual++;
     }
 
+    *max_linhas = linhaAtual; // Número total de linhas
     fclose(arquivo);
 }
 
@@ -118,4 +117,51 @@ void listarAntenas(const ED* ed) {
 
     // Passo 6: Liberar memória do array
     free(arrayAntenas);
+}
+
+// Lista as antenas de forma formatada
+void listarAntenasFormatado(const ED* ed, int max_linhas, int max_colunas) {
+    if (ed == NULL || ed->cabeca == NULL) {
+        printf("Nenhuma antena encontrada.\n");
+        return;
+    }
+
+    // Alocar dinamicamente uma matriz de caracteres (array de strings)
+    char** matriz = (char**)malloc(max_linhas * sizeof(char*));
+    if (matriz == NULL) {
+        perror("Erro ao alocar memória para a matriz");
+        exit(EXIT_FAILURE);
+    }
+
+    for (int i = 0; i < max_linhas; i++) {
+        matriz[i] = (char*)malloc((max_colunas + 1) * sizeof(char)); // +1 para '\0'
+        if (matriz[i] == NULL) {
+            perror("Erro ao alocar memória para uma linha da matriz");
+            exit(EXIT_FAILURE);
+        }
+        // Preencher a linha com '.' e terminar com '\0'
+        for (int j = 0; j < max_colunas; j++) {
+            matriz[i][j] = '.';
+        }
+        matriz[i][max_colunas] = '\0';
+    }
+
+    // Percorrer a lista de antenas e marcar suas posições na matriz
+    Antena* atual = ed->cabeca;
+    while (atual != NULL) {
+        if (atual->linha >= 0 && atual->linha < max_linhas &&
+            atual->coluna >= 0 && atual->coluna < max_colunas) {
+            matriz[atual->linha][atual->coluna] = atual->frequencia;
+        }
+        atual = atual->prox;
+    }
+
+    // Imprimir a matriz formatada
+    printf("=== Mapa de Antenas ===\n");
+    for (int i = 0; i < max_linhas; i++) {
+        printf("%s\n", matriz[i]);
+        free(matriz[i]);
+    }
+    free(matriz);
+    printf("=======================\n");
 }
