@@ -1,3 +1,11 @@
+/*!
+ *  @file dados.h
+ *  @author Tiago Afonso
+ *  @date 2025-03-17
+ *  @project Listas Ligadas Antenas
+ *
+ *  Declaração das estruturas de dados para manipulação de Antenas
+ */
 #ifndef DADOS_H
 #define DADOS_H
 

@@ -1,3 +1,11 @@
+/*!
+ *  @file LocalNefasto.h
+ *  @author Tiago Afonso
+ *  @date 2025-03-20
+ *  @project Listas Ligadas Antenas
+ *
+ *
+ */
 #pragma once
 #ifndef LOCALNEFASTO_H
 #define LOCALNEFASTO_H

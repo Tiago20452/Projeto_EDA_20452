@@ -1,6 +1,11 @@
-// Projeto_EDA.cpp : Este arquivo contém a função 'main'. A execução do programa começa e termina ali.
-//
-
+/*!
+ *  @file Projeto_EDA.cpp
+ *  @author Tiago Afonso
+ *  @date 2025-03-20
+ *  @project Listas Ligadas Antenas
+ *
+ *  Main file do projeto
+ */
 #include <iostream>
 #include "Antena.h"
 #include "ListaAntenas.h"
@@ -22,7 +27,7 @@ int main() {
 	listarAntenasFormatado(ed, max_linhas, max_colunas);
 
     //Remover uma antena existente
-	removerAntena(ed,'O', 4, 4);
+	removerAntenaManual(ed);
     listarAntenas(ed);
 
 	//Inserir uma antena manualmente

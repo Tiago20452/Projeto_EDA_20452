@@ -1,3 +1,11 @@
+/*!
+ *  @file ListaAntenas.h
+ *  @author Tiago Afonso
+ *  @date 2025-03-18
+ *  @project Listas Ligadas Antenas
+ *
+ * Declaração de Dados e Funções para manipulação de uma Lista de Antenas
+ */
 #pragma once
 
 #ifndef LISTAANTENAS_H
