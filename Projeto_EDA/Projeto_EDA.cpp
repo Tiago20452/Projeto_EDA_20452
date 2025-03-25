@@ -12,38 +12,67 @@
 #include "LocalNefasto.h"
 
 
+const char* nomeArquivo = "Antenas.txt";
+
+void exibirMenu() {
+    printf("\nMenu:\n");
+    printf("1 - Listar antenas\n");
+    printf("2 - Listar antenas formatadas\n");
+    printf("3 - Remover uma antena\n");
+    printf("4 - Inserir uma antena\n");
+    printf("5 - Calcular locais nefastos\n");
+    printf("6 - Listar locais nefastos\n");
+    printf("7 - Listar locais nefastos formatados\n");
+    printf("8 - Sair\n");
+    printf("Escolha uma opcao: ");
+}
+
 int main() {
-
-    const char* nomeArquivo = "Antenas.txt";
+    int opcao;
     ED* ed = criarED();
-	ED_LocaisNefastos locaisNefastos = { NULL };
-	int max_linhas, max_colunas;
+    ED_LocaisNefastos locaisNefastos = { NULL };
+    int max_linhas, max_colunas;
 
-	// Carregar antenas de um ficheiro
-    carregarAntenasDeFicheiro(ed, nomeArquivo, &max_linhas, &max_colunas); 
+    // Carregar antenas do ficheiro antes de exibir o menu
+    carregarAntenasDeFicheiro(ed, nomeArquivo, &max_linhas, &max_colunas);
 
-	// Listar antenas
-    listarAntenas(ed);
-	listarAntenasFormatado(ed, max_linhas, max_colunas);
+    do {
+        exibirMenu();
+        scanf_s("%d", &opcao);
 
-    //Remover uma antena existente
-	removerAntenaManual(ed);
-    listarAntenas(ed);
+        switch (opcao) {
+        case 1:
+            listarAntenas(ed);
+            break;
+        case 2:
+            listarAntenasFormatado(ed, max_linhas, max_colunas);
+            break;
+        case 3:
+            listarAntenas(ed);
+            removerAntenaManual(ed);
+            break;
+        case 4:
+            listarAntenas(ed);
+            inserirAntenaManual(ed);
+            break;
+        case 5:
+            calcularLocaisNefastos(ed, &locaisNefastos, max_linhas, max_colunas);
+            printf("Calculo feito com sucesso.\n");
+            break;
+        case 6:
+            listarLocaisNefastos(&locaisNefastos);
+            break;
+        case 7:
+            listarLocaisNefastosFormatado(&locaisNefastos, max_linhas, max_colunas);
+            break;
+        case 8:
+            printf("A Sair...\n");
+            break;
+        default:
+            printf("Opcao invalida! Tente novamente.\n");
+        }
+    } while (opcao != 8);
 
-	//Inserir uma antena manualmente
-	inserirAntenaManual(ed);    
-	listarAntenas(ed);
- 
-	// Calcular locais nefastos
-	calcularLocaisNefastos(ed, &locaisNefastos, max_linhas, max_colunas);
-
-	// Listar resultados
-	listarLocaisNefastos(&locaisNefastos);
-
-	// Listar resultados formatados como o ficheiro de entrada
-	listarLocaisNefastosFormatado(&locaisNefastos, max_linhas, max_colunas);
-
-	destruirED(ed);
-
+    destruirED(ed);
     return 0;
 }
