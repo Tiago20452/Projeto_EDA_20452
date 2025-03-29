@@ -21,3 +21,4 @@ void listarLocaisNefastos(const ED_LocaisNefastos* locais);
 void listarLocaisNefastosFormatado(const ED_LocaisNefastos* locais, int max_linhas, int max_colunas);
 
 #endif // LOCALNEFASTO_H
+
