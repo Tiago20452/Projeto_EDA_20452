@@ -69,7 +69,7 @@ int main() {
             printf("A Sair...\n");
             break;
         default:
-            printf("Opcao invalida! Tente novamente.\n");
+            printf("Opção invalida! Tente novamente.\n");
         }
     } while (opcao != 8);
 
