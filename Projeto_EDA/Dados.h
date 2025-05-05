@@ -42,4 +42,24 @@ typedef struct {
     LocalNefasto* cabeca; // Lista de locais nefastos
 } ED_LocaisNefastos;
 
+
+//FASE 2
+
+/**
+ * @brief Estrutura que representa um vértice no grafo
+ */
+typedef struct Vertice {
+    Antena* antena;          // Dados da antena (frequência, linha, coluna)
+    struct Vertice** adjacencias; // Lista de vértices adjacentes (mesma frequência)
+    int num_adjacencias;     // Número de adjacências
+} Vertice;
+
+/**
+ * @brief Estrutura que representa uma aresta no grafo
+ */
+typedef struct {
+    Vertice** vertices;      // Array de vértices
+    int num_vertices;        // Número total de vértices
+} GR;
+
 #endif // DADOS_H

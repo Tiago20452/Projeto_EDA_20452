@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Antena.cpp" />
+    <ClCompile Include="Grafo.cpp" />
     <ClCompile Include="ListaAntenas.cpp" />
     <ClCompile Include="LocalNefasto.cpp" />
     <ClCompile Include="Projeto_EDA.cpp" />
@@ -135,6 +136,7 @@
   <ItemGroup>
     <ClInclude Include="Antena.h" />
     <ClInclude Include="Dados.h" />
+    <ClInclude Include="Grafo.h" />
     <ClInclude Include="ListaAntenas.h" />
     <ClInclude Include="LocalNefasto.h" />
   </ItemGroup>
