@@ -24,9 +24,10 @@ void exibirMenu() {
     printf("5 - Calcular locais nefastos\n");
     printf("6 - Listar locais nefastos\n");
     printf("7 - Listar locais nefastos formatados\n");
-    printf("8 - Listar vertices do grafo\n");   // Nova opção
-    printf("9 - Listar arestas do grafo\n");   // Nova opção
-    printf("10 - Sair\n");                      // Ajuste para 11
+    printf("8 - Listar vertices do grafo\n");   
+    printf("9 - Listar arestas do grafo\n"); 
+    printf("10 - Procura por porfundidade\n");
+    printf("11 - Sair\n");                      
     printf("Escolha uma opcao: ");
 }
 
@@ -35,7 +36,7 @@ int main() {
     int opcao;
     ED* ed = criarED();
     ED_LocaisNefastos locaisNefastos = { NULL };
-    GR* grafo = criarGrafo(); // Novo: Grafo da Fase 2
+    GR* grafo = criarGrafo(); 
     int max_linhas, max_colunas;
 
     // Carregar antenas do ficheiro antes de exibir o menu
@@ -72,21 +73,48 @@ int main() {
         case 7:
             listarLocaisNefastosFormatado(&locaisNefastos, max_linhas, max_colunas);
             break;
-        case 8: // Listar vértices do grafo
+        case 8: 
             listarVertices(grafo);
             break;
-        case 9: // Listar arestas do grafo
+        case 9: 
             listarArestas(grafo);
             break;
-        case 10:
+        case 10: {
+            int linha, coluna;
+            printf("Digite as coordenadas da linha da antena: ");
+            scanf_s("%d\n", &linha);
+
+            printf("Digite as coordenadas da coluna da antena: ");
+            scanf_s("%d\n", &coluna);
+
+            // Encontra a antena com base nas coordenadas
+            Antena* antenaAlvo = NULL;
+            Antena* atual = ed->cabeca;
+            while (atual != NULL) {
+                if (atual->linha == linha && atual->coluna == coluna) {
+                    antenaAlvo = atual;
+                    break;
+                }
+                atual = atual->prox;
+            }
+
+            if (antenaAlvo) {
+                DFS(grafo, antenaAlvo);
+            }
+            else {
+                printf("Nenhuma antena encontrada em (%d, %d).\n", linha, coluna);
+            }
+            break;
+        }
+        case 11:
             printf("A Sair...\n");
             break;
         default:
             printf("Opção invalida! Tente novamente.\n");
         }
-    } while (opcao != 10);
+    } while (opcao != 11);
 ;
-    destruirED(ed); // Só no final do programa
+    destruirED(ed); 
     destruirGrafo(grafo);
     return 0;
 }

@@ -39,7 +39,7 @@ typedef struct LocalNefasto {
  * @brief Estrutura principal LocaisNefastos (lista ligada de locais nefastos)
  */
 typedef struct {
-    LocalNefasto* cabeca; // Lista de locais nefastos
+    LocalNefasto* cabeca;   // Lista de locais nefastos
 } ED_LocaisNefastos;
 
 
@@ -49,9 +49,10 @@ typedef struct {
  * @brief Estrutura que representa um vértice no grafo
  */
 typedef struct Vertice {
-    Antena* antena;          // Dados da antena (frequência, linha, coluna)
-    struct Vertice** adjacencias; // Lista de vértices adjacentes (mesma frequência)
-    int num_adjacencias;     // Número de adjacências
+    Antena* antena;                 // Dados da antena (frequência, linha, coluna)
+    struct Vertice** adjacencias;   // Lista de vértices adjacentes (mesma frequência)
+    int num_adjacencias;  
+    int id;                         // Número de adjacências
 } Vertice;
 
 /**

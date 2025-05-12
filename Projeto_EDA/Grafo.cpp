@@ -1,7 +1,7 @@
 /*!
- *  @file Antena.cpp
+ *  @file Grafo.cpp
  *  @author Tiago Afonso
- *  @date 2025-03-17
+ *  @date 2025-05-01
  *  @project Listas Ligadas Antenas
  *
  * Resolução e implementação de funções para manipulação de Antenas
@@ -10,11 +10,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "Grafo.h"
 #include "Dados.h"
 #include "ListaAntenas.h"
 #include "Antena.h"
 
+/**
+  * Função para criar uma nova lista ligada vazia.
+  *
+  * Aloca dinamicamente memória para a estrutura ED e inicializa a cabeça da lista como NULL.
+  * Em caso de falha na alocação de memória, exibe uma mensagem de erro e encerra o programa.
+  *
+ */
 GR* criarGrafo() {
     GR* grafo = (GR*)malloc(sizeof(GR));
     if (grafo == NULL) {
@@ -26,6 +34,13 @@ GR* criarGrafo() {
     return grafo;
 }
 
+/**
+  * Função para libertar toda a memória alocada para o grafo.
+  *
+  * Percorre todos os vértices do grafo, libertando a memória de cada um deles e suas adjacências.
+  * No final, liberta a memória da estrutura do grafo.
+  *
+ */
 void destruirGrafo(GR* grafo) {
     for (int i = 0; i < grafo->num_vertices; i++) {
         free(grafo->vertices[i]->adjacencias);
@@ -35,6 +50,13 @@ void destruirGrafo(GR* grafo) {
     free(grafo);
 }
 
+/**
+  * Função para carregar um grafo a partir de um ficheiro de texto.
+  *
+  * Lê as antenas do ficheiro e as insere como vértices no grafo.
+  * Cria arestas entre antenas que compartilham a mesma frequência.
+  *
+ */
 void carregarGrafoDeFicheiro(GR* grafo, const char* nomeFicheiro) {
     ED* ed = criarED();
     int max_linhas, max_colunas;
@@ -63,6 +85,13 @@ void carregarGrafoDeFicheiro(GR* grafo, const char* nomeFicheiro) {
     }
 }
 
+/**
+  * Função para inserir um vértice (antena) no grafo.
+  *
+  * Verifica se a antena já existe no grafo antes de inseri-la.
+  * Se não existir, aloca memória para o novo vértice e o adiciona ao grafo.
+  *
+ */
 void inserirVertice(GR* grafo, Antena* antena) {
     // Verifica se a antena já está no grafo
     for (int i = 0; i < grafo->num_vertices; i++) {
@@ -101,6 +130,13 @@ void inserirVertice(GR* grafo, Antena* antena) {
     grafo->num_vertices++;
 }
 
+/**
+  * Função para inserir uma aresta entre dois vértices (antenas) no grafo.
+  *
+  * Verifica se ambos os vértices existem e têm a mesma frequência antes de criar a aresta.
+  * Adiciona cada vértice à lista de adjacências do outro.
+  *
+ */
 void inserirAresta(GR* grafo, Antena* a1, Antena* a2) {
     if (grafo == NULL || a1 == NULL || a2 == NULL) return;
 
@@ -149,6 +185,12 @@ void inserirAresta(GR* grafo, Antena* a1, Antena* a2) {
     }
 }
 
+/**
+  * Função para listar os vértices do grafo em ordem decrescente de linha e crescente de coluna.
+  *
+  * Cria um array temporário para armazenar os ponteiros dos vértices, ordena-os e exibe as informações.
+  *
+ */
 void listarVertices(GR* grafo) {
     if (grafo == NULL || grafo->num_vertices == 0) {
         printf("Nenhum vértice no grafo.\n");
@@ -190,6 +232,12 @@ void listarVertices(GR* grafo) {
     free(arrayVertices);
 }
 
+/**
+  * Função para listar as arestas do grafo.
+  *
+  * Percorre todos os vértices e exibe suas adjacências.
+  *
+ */
 void listarArestas(GR* grafo) {
     for (int i = 0; i < grafo->num_vertices; i++) {
         Vertice* v = grafo->vertices[i];
@@ -205,4 +253,50 @@ void listarArestas(GR* grafo) {
                 vizinho->antena->coluna);
         }
     }
+}
+
+
+// Função auxiliar para DFS recursiva
+static void DFSUtil(Vertice* v, bool visitados[]) {
+    visitados[v->id] = true; // Marca como visitado
+    printf("Antena '%c' em (%d, %d)\n",
+        v->antena->frequencia,
+        v->antena->linha,
+        v->antena->coluna);
+
+    // Visita todos os vértices adjacentes não visitados
+    for (int i = 0; i < v->num_adjacencias; i++) {
+        Vertice* vizinho = v->adjacencias[i];
+        if (!visitados[vizinho->id]) {
+            DFSUtil(vizinho, visitados);
+        }
+    }
+}
+
+
+// Função principal para DFS a partir de uma antena específica
+void DFS(GR* grafo, Antena* antena) {
+    if (grafo == NULL || antena == NULL) {
+        printf("Parâmetros inválidos.\n");
+        return;
+    }
+
+    // Encontra o vértice correspondente à antena
+    Vertice* verticeInicio = NULL;
+    for (int i = 0; i < grafo->num_vertices; i++) {
+        if (grafo->vertices[i]->antena == antena) {
+            verticeInicio = grafo->vertices[i];
+            break;
+        }
+    }
+
+    if (verticeInicio == NULL) {
+        printf("Antena não encontrada no grafo.\n");
+        return;
+    }
+
+    // Inicializa array de visitados
+    bool* visitados = (bool*)calloc(grafo->num_vertices, sizeof(bool));
+    DFSUtil(verticeInicio, visitados);
+    free(visitados);
 }
