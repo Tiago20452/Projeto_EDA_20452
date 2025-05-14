@@ -25,9 +25,9 @@ void exibirMenu() {
     printf("6 - Listar locais nefastos\n");
     printf("7 - Listar locais nefastos formatados\n");
     printf("8 - Listar vertices do grafo\n");   
-    printf("9 - Listar arestas do grafo\n"); 
-    printf("10 - Procura por porfundidade\n");
-    printf("11 - Sair\n");                      
+    printf("9 - Listar arestas do grafo\n");
+    printf("10 - Procura por profundidade\n");
+    printf("11 - Sair\n");
     printf("Escolha uma opcao: ");
 }
 
@@ -42,7 +42,7 @@ int main() {
     // Carregar antenas do ficheiro antes de exibir o menu
     carregarAntenasDeFicheiro(ed, nomeArquivo, &max_linhas, &max_colunas);
 
-    carregarGrafoDeFicheiro(grafo, nomeArquivo);
+    carregarGrafoDeFicheiro(grafo, ed);
 
     do {
         exibirMenu();
@@ -79,33 +79,12 @@ int main() {
         case 9: 
             listarArestas(grafo);
             break;
-        case 10: {
+        case 10:
             int linha, coluna;
-            printf("Digite as coordenadas da linha da antena: ");
-            scanf_s("%d\n", &linha);
-
-            printf("Digite as coordenadas da coluna da antena: ");
-            scanf_s("%d\n", &coluna);
-
-            // Encontra a antena com base nas coordenadas
-            Antena* antenaAlvo = NULL;
-            Antena* atual = ed->cabeca;
-            while (atual != NULL) {
-                if (atual->linha == linha && atual->coluna == coluna) {
-                    antenaAlvo = atual;
-                    break;
-                }
-                atual = atual->prox;
-            }
-
-            if (antenaAlvo) {
-                DFS(grafo, antenaAlvo);
-            }
-            else {
-                printf("Nenhuma antena encontrada em (%d, %d).\n", linha, coluna);
-            }
+            printf("Digite as coordenadas da antena inicial (linha coluna): ");
+            scanf_s("%d %d", &linha, &coluna);
+            buscaProfundidade(grafo, linha, coluna);
             break;
-        }
         case 11:
             printf("A Sair...\n");
             break;

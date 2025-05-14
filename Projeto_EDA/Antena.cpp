@@ -78,7 +78,7 @@ void insereAntena(ED* ed, char freq, int linha, int coluna) {
  *
  * Percorre a lista ligada de Antenas para encontrar a antena que corresponde à
  * frequência e coordenadas especificadas. Se encontrada, remove a antena da lista e
- * libera a memória associada a ela.
+ * liberta a memória associada a ela.
  *
  */
 int removerAntena(ED* ed, char freq, int linha, int coluna) {

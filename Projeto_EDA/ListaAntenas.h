@@ -11,7 +11,7 @@
 #ifndef LISTAANTENAS_H
 #define LISTAANTENSA_H
 
-#include "Dados.h" // Para usar as estruturas Antena e ED
+#include "Dados.h" // Utiliza as estruturas Antena e ED
 
 // ---------- Gestão da ED ----------
 ED* criarED();

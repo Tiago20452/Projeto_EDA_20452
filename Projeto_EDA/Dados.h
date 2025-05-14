@@ -51,8 +51,8 @@ typedef struct {
 typedef struct Vertice {
     Antena* antena;                 // Dados da antena (frequência, linha, coluna)
     struct Vertice** adjacencias;   // Lista de vértices adjacentes (mesma frequência)
-    int num_adjacencias;  
-    int id;                         // Número de adjacências
+    int num_adjacencias;            // Número de adjacências
+                         
 } Vertice;
 
 /**

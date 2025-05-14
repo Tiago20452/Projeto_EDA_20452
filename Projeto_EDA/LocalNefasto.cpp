@@ -28,6 +28,7 @@ static int localExiste(ED_LocaisNefastos* locais, int linha, int coluna) {
     return 0;
 }
 
+
 // Adiciona um local nefasto à lista
 static void adicionarLocalNefasto(ED_LocaisNefastos* locais, int linha, int coluna) {
     if (localExiste(locais, linha, coluna)) return;
@@ -56,7 +57,7 @@ void calcularLocaisNefastos(ED* ed, ED_LocaisNefastos* locaisNefastos, int max_l
     if (ed == NULL || locaisNefastos == NULL) return; // Verificação de segurança para evitar erros
 
     Antena* atual = ed->cabeca;
-    ED* mapaFrequencias[256] = { 0 }; // Array para armazenar listas de antenas por frequência (ASCII)
+    ED* mapaFrequencias[256] = { 0 }; // Array para armazenar listas de antenas por frequência 
 
     // Passo 1: Agrupar antenas por frequência
     while (atual != NULL) {

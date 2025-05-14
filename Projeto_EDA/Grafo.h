@@ -17,12 +17,13 @@
 // ---------- Funções Básicas do Grafo ----------
 GR* criarGrafo();
 void destruirGrafo(GR* grafo);
-void carregarGrafoDeFicheiro(GR* grafo, const char* nomeFicheiro);
+void carregarGrafoDeFicheiro(GR* grafo, ED* ed);
 void inserirVertice(GR* grafo, Antena* antena);
 void inserirAresta(GR* grafo, Antena* a1, Antena* a2);
 void listarVertices(GR* grafo);
 void listarArestas(GR* grafo);
 
-void DFS(GR* grafo, Antena* antena);
+// ---------- Funções de Busca ----------
+void buscaProfundidade(GR* grafo, int linha, int coluna);
 
 #endif // GRAFO_H
