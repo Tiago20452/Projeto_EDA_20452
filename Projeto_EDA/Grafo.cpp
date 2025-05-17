@@ -66,7 +66,7 @@ void destruirGrafo(GR* grafo) {
  * Em seguida, cria arestas entre todas as antenas que compartilham a mesma frequência de ressonância.
  *
  */
-void carregarGrafoDeFicheiro(GR* grafo, ED* ed) {
+void carregarGrafo(GR* grafo, ED* ed) {
 
     // Percorre a lista ligada de antenas e adiciona cada uma como vértice no grafo
     Antena* atual = ed->cabeca;
@@ -267,7 +267,7 @@ void listarArestas(GR* grafo) {
         Vertice* v = grafo->vertices[i];
 
         // Imprime a antena do vértice atual
-        printf("%c(%d, %d) está conectado a:\n",
+        printf("%c(%d, %d) esta conectado a:\n",
             v->antena->frequencia,
             v->antena->linha,
             v->antena->coluna);

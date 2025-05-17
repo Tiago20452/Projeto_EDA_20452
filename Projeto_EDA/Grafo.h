@@ -17,7 +17,7 @@
 // ---------- Funções Básicas do Grafo ----------
 GR* criarGrafo();
 void destruirGrafo(GR* grafo);
-void carregarGrafoDeFicheiro(GR* grafo, ED* ed);
+void carregarGrafo(GR* grafo, ED* ed);
 void inserirVertice(GR* grafo, Antena* antena);
 void inserirAresta(GR* grafo, Antena* a1, Antena* a2);
 void listarVertices(GR* grafo);

@@ -42,7 +42,7 @@ int main() {
     // Carregar antenas do ficheiro antes de exibir o menu
     carregarAntenasDeFicheiro(ed, nomeArquivo, &max_linhas, &max_colunas);
 
-    carregarGrafoDeFicheiro(grafo, ed);
+    carregarGrafo(grafo, ed);
 
     do {
         exibirMenu();
